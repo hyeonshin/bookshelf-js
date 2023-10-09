@@ -198,7 +198,8 @@ function editBookFromUncomplete(bookId) {
 
     const textTitle = prompt("Masukkan judul buku:", bookItem.title);
     const textAuthor = prompt("Masukkan nama penulis:", bookItem.author);
-    const numberYear = prompt("Masukkan tahun terbit:", bookItem.year);
+    const numberYear = parseInt(prompt("Masukkan tahun terbit:", bookItem.year));
+    console.log(numberYear);
     if (textTitle != null || textTitle != "") {
         if (textTitle != null) {
             bookItem.title = textTitle;
@@ -211,7 +212,11 @@ function editBookFromUncomplete(bookId) {
     }
     if (numberYear != null || numberYear != "") {
         if (numberYear != null) {
-            bookItem.year = numberYear;
+            if (/^[0-9.,]+$/.test(numberYear)) {
+                bookItem.year = numberYear;
+            } else {
+                alert("data harus berupa angka!");
+            }
         }
     }
 
@@ -229,7 +234,7 @@ function editBookFromCompleted(bookId) {
 
     const textTitle = prompt("Masukkan judul buku:", bookItem.title);
     const textAuthor = prompt("Masukkan nama penulis:", bookItem.author);
-    const numberYear = prompt("Masukkan tahun terbit:", bookItem.year);
+    const numberYear = parseInt(prompt("Masukkan tahun terbit:", bookItem.year));
     if (textTitle != null || textTitle != "") {
         if (textTitle != null) {
             bookItem.title = textTitle;
@@ -242,7 +247,13 @@ function editBookFromCompleted(bookId) {
     }
     if (numberYear != null || numberYear != "") {
         if (numberYear != null) {
-            bookItem.year = numberYear;
+            if (numberYear != null) {
+                if (/^[0-9.,]+$/.test(numberYear)) {
+                    bookItem.year = numberYear;
+                } else {
+                    alert("data harus berupa angka!");
+                }
+            }
         }
     }
 
